@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>My E-Commerce Website</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="app">
+      <h1>E-Commerce Website</h1>
+      <div class="product-list">
+        <div class="product" v-for="(product, index) in products">
+          <img :src="product.image" :alt="product.name">
+          <h3>{{ product.name }}</h3>
+          <p>{{ product.price }}</p>
+          <button @click="addToCart(index)">Add to Cart</button>
+        </div>
+      </div>
+      <h2>Cart</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(product, index) in cart">
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }}</td>
+            <td>
+              <button class="remove-from-cart" @click="removeFromCart(index)">X</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <script src="app.js"></script>
+  </body>
+</html>
